@@ -36,7 +36,11 @@ file_convert:
 
 ```ruby
 # converts `path_to_some_file` from <txt> to <pdf>
-FileConvert.convert('path_to_some_file', 'text/plain', 'application/pdf')
+conversion = FileConvert.convert('path_to_some_file.txt', 'text/plain', 'application/pdf')
+# converted body is accessible via `#body`
+conversion.body
+# .. or define a path to save the converted document to
+conversion.save('path_to_new_file.pdf')
 ```
 
 ## Specs
@@ -51,6 +55,6 @@ Run `$ bundle exec rspec -c`
 
 ## Gloss
 
-Copyright © 2013 [Roman Ernst](http://farbenmeer.net), released under CC BY-SA 3.0 license - sponsored by [tolingo GmbH](http://tolingo.com)
+Copyright © 2014 [Roman Ernst](http://farbenmeer.net), released under CC BY-SA 3.0 license - sponsored by [tolingo GmbH](http://tolingo.com)
 
 .. without warranty of any kind!
