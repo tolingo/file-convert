@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.description   = 'Uses google-api-ruby-client and Google Drive to convert files from one mime-type to another'
 
   s.author        = 'Roman Ernst'
-  s.email         = 'rernst@farbenmeer.bet'
+  s.email         = 'rernst@farbenmeer.net'
   s.license       = 'CC BY-SA 3.0'
   s.homepage      = 'https://github.com/tolingo/file-convert'
   s.files         = Dir['README.md', 'lib/**/*', 'config/file_convert.yml']

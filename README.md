@@ -16,7 +16,7 @@ gem "file-convert"
 
 ### Via initializer
 
-`FileConvert` exposes `.configure` which accepts a block a passes the config hash.
+`FileConvert` exposes `.configure` which accepts a block and passes the config hash.
 *Example*:
 
 ```ruby
