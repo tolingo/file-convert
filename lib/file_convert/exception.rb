@@ -30,5 +30,13 @@ module FileConvert
       end
     end
 
+    class MissingConfig < StandardError
+      def message
+        """
+          Please define a config for FileConvert.
+          See https://github.com/tolingo/file-convert#config for defailt.
+        """
+      end
+    end
   end
 end

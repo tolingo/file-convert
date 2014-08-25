@@ -14,6 +14,22 @@ gem "file-convert"
 
 ## Config
 
+### Via initializer
+
+`FileConvert` exposes `.configure` which accepts a block a passes the config hash.
+*Example*:
+
+```ruby
+FileConvert.configure do |config|
+  config['google_service_account'] = {
+    'email' => '<strange-hash>@developer.gserviceaccount.com',
+    'pkcs12_file_path' => 'config/file_convert_key.p12'
+  }
+end
+```
+
+### Via YAML
+
 You need to add a YAML configuration file to `/config/file_convert.yml` that looks like `config/file_convert.sample.yml`.
 
 In order to communicate with the Google API, `file_convert` requires a google developer email Address (`email`) and `pkcs12_file_path`.
@@ -31,6 +47,10 @@ file_convert:
     email: '<strange-hash>@developer.gserviceaccount.com'
     pkcs12_file_path: 'config/file_convert_key.p12'
 ```
+
+## Available Formats
+
+See [Google Drive API Export Formats](https://developers.google.com/drive/web/integrate-open#open_and_convert_google_docs_in_your_app).
 
 ## Examples
 

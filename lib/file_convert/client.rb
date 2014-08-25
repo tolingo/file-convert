@@ -1,4 +1,6 @@
 module FileConvert
+  require 'google/api_client'
+
   class Client < Google::APIClient
     APP_OPTIONS = {
       application_name: 'file-convert',
@@ -6,7 +8,6 @@ module FileConvert
     }
 
     attr_reader :drive
-    attr_reader :config
 
     ###
     # Inherits from Google::APIClient
@@ -14,11 +15,11 @@ module FileConvert
     #
     # @return [FileConvert::Client] (inherits from Google::APIClient)
     def initialize
-      @config = FileConvert::Config['google_service_account']
-      @config['auth_url'] ||= 'https://www.googleapis.com/auth/drive'
+      gaccount = FileConvert.config['google_service_account']
+      gaccount['auth_url'] ||= 'https://www.googleapis.com/auth/drive'
 
-      key = Google::APIClient::PKCS12.load_key(@config['pkcs12_file_path'], 'notasecret')
-      asserter = Google::APIClient::JWTAsserter.new(@config['email'], @config['auth_url'], key)
+      key = Google::APIClient::PKCS12.load_key(gaccount['pkcs12_file_path'], 'notasecret')
+      asserter = Google::APIClient::JWTAsserter.new(gaccount['email'], gaccount['auth_url'], key)
 
       super(APP_OPTIONS).tap do |client|
         client.authorization = asserter.authorize

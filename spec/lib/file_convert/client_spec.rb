@@ -1,6 +1,7 @@
 require File.join(File.dirname(__FILE__), '../../spec_helper.rb')
 
 describe FileConvert::Client do
+  before(:all) { FileConvert::Configure::init_config! }
 
   before :each do
     @client = FileConvert::Client.new

@@ -1,6 +1,6 @@
 require File.join(File.dirname(__FILE__), '../spec_helper.rb')
 
-descibe FileConvert do
+describe FileConvert do
 
   describe '.convert' do
     let(:file_path) { 'spec/fixtures/test.txt' }
@@ -11,4 +11,14 @@ descibe FileConvert do
     it { should be_a(FileConvert::Conversion) }
   end
 
+  describe '.client' do
+    context 'with no config given' do
+      before { FileConvert.configure { |config| config.replace({}) } }
+      after  { FileConvert::Configure.init_config! }
+
+      it 'should raise' do
+        expect { FileConvert.send(:client) }.to raise_error(FileConvert::Exception::MissingConfig)
+      end
+    end
+  end
 end

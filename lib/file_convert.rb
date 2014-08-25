@@ -1,17 +1,13 @@
 module FileConvert
-  require 'yaml'
-  require 'google/api_client'
-
-  File.open('config/file_convert.yml') do |file|
-    FileConvert::Config = YAML::load(file)['file_convert']
-  end
-
   require 'file_convert/version'
   require 'file_convert/exception'
+  require 'file_convert/configure'
   require 'file_convert/client'
   require 'file_convert/file'
   require 'file_convert/upload'
   require 'file_convert/conversion'
+
+  extend Configure and Configure::init_config!
 
   ###
   # @param [String] file_path
@@ -32,7 +28,8 @@ module FileConvert
   ###
   # Initialize a new FileConvert::Client
   def self.client
-    @client ||= FileConvert::Client.new
+    raise Exception::MissingConfig unless config_present?
+    @@client ||= FileConvert::Client.new
   end
 
 end

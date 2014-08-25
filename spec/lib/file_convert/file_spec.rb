@@ -2,6 +2,7 @@ require File.join(File.dirname(__FILE__), '../../spec_helper.rb')
 require File.join(File.dirname(__FILE__), '../../spec_helper.rb')
 
 describe FileConvert::Conversion do
+  before(:all) { FileConvert::Configure::init_config! }
 
   let(:original_file) { double('file', data: 'tanzbar') }
   subject { @file }
