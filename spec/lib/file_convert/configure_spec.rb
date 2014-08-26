@@ -11,6 +11,7 @@ describe FileConvert::Configure do
   }
 
   context 'from yaml' do
+    before { stub_const('FileConvert::Configure::DEFAULT_CONFIG_PATH', 'config/file_convert.sample.yml') }
     describe '.config' do
       subject { module_mock.config }
       it { should be_a(Hash) }
