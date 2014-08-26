@@ -1,7 +1,9 @@
+require 'lib/file_convert/version'
+
 Gem::Specification.new do |s|
   s.platform      = Gem::Platform::RUBY
   s.name          = 'file-convert'
-  s.version       = '0.0.1'
+  s.version       = FileConvert::Version::STRING
   s.summary       = 'Instrumentalize Google Drive to convert files'
   s.description   = 'Uses google-api-ruby-client and Google Drive to convert files from one mime-type to another'
 
