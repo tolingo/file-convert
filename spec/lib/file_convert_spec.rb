@@ -3,6 +3,7 @@ require File.join(File.dirname(__FILE__), '../spec_helper.rb')
 describe FileConvert do
 
   describe '.convert' do
+    before { configure_with_mock }
     let(:file_path) { 'spec/fixtures/test.txt' }
     let(:source_mime_type) { 'text/plain' }
     let(:target_mime_type) { 'application/pdf' }
