@@ -7,7 +7,9 @@ module FileConvert
   require 'file_convert/upload'
   require 'file_convert/conversion'
 
-  extend Configure and Configure::init_config!
+  extend FileConvert::Configure
+
+  FileConvert::Configure.init_config!
 
   ###
   # @param [String] file_path
@@ -31,5 +33,4 @@ module FileConvert
     raise Exception::MissingConfig unless config_present?
     @@client ||= FileConvert::Client.new
   end
-
 end
