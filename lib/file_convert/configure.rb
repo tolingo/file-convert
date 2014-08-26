@@ -18,15 +18,11 @@ module FileConvert
       @@config
     end
 
-    def self.init_config!
-      @@config = config_yaml_present? ? config_from_yaml : {}
-    end
-
     ###
     # Loads config/file_convert.yml['file_convert'] into Config
     # Or defaults to empty Hash if config file is not present
-    def init_config!
-      Configure.init_config!
+    def self.init_config!
+      @@config = config_yaml_present? ? config_from_yaml : {}
     end
 
     def configure
