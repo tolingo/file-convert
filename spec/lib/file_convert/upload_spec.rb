@@ -1,7 +1,7 @@
 require File.join(File.dirname(__FILE__), '../../spec_helper.rb')
 
 describe FileConvert::Upload do
-  before(:all) { FileConvert::Configure::init_config! }
+  before(:all) { configure_with_mock }
 
   let(:file_path) { 'spec/fixtures/test.txt' }
   let(:mime_type) { 'text/plain' }
