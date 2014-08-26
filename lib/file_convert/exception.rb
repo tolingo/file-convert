@@ -34,7 +34,7 @@ module FileConvert
       def message
         """
           Please define a config for FileConvert.
-          See https://github.com/tolingo/file-convert#config for defailt.
+          See https://github.com/tolingo/file-convert#config for default.
         """
       end
     end
