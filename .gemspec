@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.files         = Dir['README.md', 'lib/**/*', 'config/file_convert.yml']
   s.require_path  = 'lib'
 
-  s.required_ruby_version = '>= 1.9.2'
+  s.required_ruby_version = Gem::Requirement.new '>= 1.9.2'
 
   s.add_dependency 'google-api-client', '~> 0.7.0'
 end
