@@ -1,2 +1,6 @@
 Style/Encoding:
   EnforcedStyle: when_needed
+Style/Documentation:
+  Enabled: false
+Style/ClassVars:
+  Enabled: false
