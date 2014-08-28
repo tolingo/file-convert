@@ -7,11 +7,11 @@ Gem::Specification.new do |s|
   s.summary       = 'Instrumentalize Google Drive to convert files'
   s.description   = 'Uses google-api-ruby-client and Google Drive to convert files from one mime-type to another'
 
-  s.author        = 'Roman Ernst'
-  s.email         = 'rernst@farbenmeer.net'
-  s.license       = 'CC BY-SA 3.0'
+  s.authors       = ['Roman Ernst', 'Jan Raasch']
+  s.email         = ['rernst@farbenmeer.net', 'jan@janraasch.com']
+  s.license       = 'MIT'
   s.homepage      = 'https://github.com/tolingo/file-convert'
-  s.files         = Dir['README.md', 'lib/**/*', 'config/file_convert.yml']
+  s.files         = Dir['README.md', 'lib/**/*']
   s.require_path  = 'lib'
 
   s.required_ruby_version = Gem::Requirement.new '>= 1.9.2'

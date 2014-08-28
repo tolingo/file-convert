@@ -75,6 +75,6 @@ Run `$ bundle exec rspec -c`
 
 ## Gloss
 
-Copyright © 2014 [Roman Ernst](http://farbenmeer.net), released under CC BY-SA 3.0 license - sponsored by [tolingo GmbH](http://tolingo.com)
+Copyright © 2014 [Roman Ernst](http://farbenmeer.net), released under MIT license - sponsored by [tolingo GmbH](http://tolingo.com)
 
 .. without warranty of any kind!
