@@ -9,7 +9,7 @@
 Simply add it to your Gemfile:
 
 ```ruby
-gem "file-convert"
+gem 'file-convert'
 ```
 
 ## Config
