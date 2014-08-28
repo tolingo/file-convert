@@ -63,9 +63,9 @@ conversion.body
 conversion.save('path_to_new_file.pdf')
 ```
 
-## Specs
+## Specs and Rubocop
 
-Run `$ bundle exec rspec`
+Run `$ bundle exec rake`
 
 ## Next Steps
 

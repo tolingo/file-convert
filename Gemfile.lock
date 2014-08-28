@@ -44,6 +44,7 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     rainbow (2.0.0)
+    rake (10.3.2)
     retriable (1.4.1)
     rspec (3.0.0)
       rspec-core (~> 3.0.0)
@@ -77,5 +78,6 @@ PLATFORMS
 DEPENDENCIES
   file-convert!
   pry (~> 0.10.1)
+  rake (~> 10.3.2)
   rspec (~> 3.0.0)
   rubocop (~> 0.25.0)
