@@ -1,5 +1,11 @@
+$LOAD_PATH << File.join(File.dirname(__FILE__), '..', 'lib')
+$LOAD_PATH << File.join(File.dirname(__FILE__))
+
+require 'rubygems'
+require 'rspec'
 require 'pry'
-require File.expand_path('../../lib/file_convert', __FILE__)
+
+require 'file_convert'
 
 RSpec.configure do |config|
   config.mock_with :rspec do |mock_config|

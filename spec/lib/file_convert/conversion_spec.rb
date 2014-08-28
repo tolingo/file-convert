@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), '../../spec_helper.rb')
+require 'spec_helper'
 
 describe FileConvert::Conversion do
   before(:all) { FileConvert::Configure::init_config! }
