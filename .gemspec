@@ -1,4 +1,5 @@
-require 'lib/file_convert/version'
+$LOAD_PATH << File.expand_path('../lib', __FILE__)
+require 'file_convert/version'
 
 Gem::Specification.new do |s|
   s.platform      = Gem::Platform::RUBY
@@ -17,4 +18,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = Gem::Requirement.new '>= 1.9.2'
 
   s.add_dependency 'google-api-client', '~> 0.7.0'
+
+  s.add_development_dependency 'rspec', '~> 3.0.0'
+  s.add_development_dependency 'pry', '~> 0.10.1'
 end
