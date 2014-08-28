@@ -20,5 +20,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'google-api-client', '~> 0.7.0'
 
   s.add_development_dependency 'rspec', '~> 3.0.0'
+  s.add_development_dependency 'rubocop', '~> 0.25.0'
   s.add_development_dependency 'pry', '~> 0.10.1'
 end
