@@ -12,24 +12,24 @@ describe FileConvert::Conversion do
   end
 
   describe '#initialize' do
-    it { should be_a(FileConvert::File) }
+    it { is_expected.to be_a(FileConvert::File) }
   end
 
   describe '#data' do
     subject { @file.data }
-    it { should == 'tanzbar' }
+    it { is_expected.to eq('tanzbar') }
   end
 
   describe '#conversions' do
     subject { @file.conversions }
 
     context 'after initialization' do
-      it { should == {} }
+      it { is_expected.to eq({}) }
     end
 
     context 'after adding a conversion' do
       before { @file.add_conversion('foo', 'bar') }
-      it { should == { 'foo' => 'bar' } }
+      it { is_expected.to eq({ 'foo' => 'bar' }) }
     end
   end
 

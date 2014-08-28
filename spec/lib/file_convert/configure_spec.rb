@@ -14,8 +14,8 @@ describe FileConvert::Configure do
     before { stub_const('FileConvert::Configure::DEFAULT_CONFIG_PATH', 'config/file_convert.sample.yml') }
     describe '.config' do
       subject { module_mock.config }
-      it { should be_a(Hash) }
-      it { should include('google_service_account') }
+      it { is_expected.to be_a(Hash) }
+      it { is_expected.to include('google_service_account') }
     end
   end
 
@@ -25,15 +25,15 @@ describe FileConvert::Configure do
     context 'default' do
       describe '.config' do
         subject { module_mock.config }
-        it { should be_a(Hash) }
-        it { should be_empty }
+        it { is_expected.to be_a(Hash) }
+        it { is_expected.to be_empty }
       end
     end
 
     context 'with no config given' do
       describe '.config_present?' do
         subject { module_mock.config_present? }
-        it { should == false }
+        it { is_expected.to eq(false) }
       end
     end
 
@@ -46,8 +46,8 @@ describe FileConvert::Configure do
         }
 
         subject { module_mock.config }
-        it { should be_a(Hash) }
-        it { should == { 'foo' => { bar: 'Elbschiffer' } } }
+        it { is_expected.to be_a(Hash) }
+        it { is_expected.to eq({ 'foo' => { bar: 'Elbschiffer' } }) }
       end
     end
   end

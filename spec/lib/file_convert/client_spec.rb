@@ -9,12 +9,12 @@ describe FileConvert::Client do
 
   describe '#initialize' do
     subject { @client }
-    it { should be_a(Google::APIClient) }
+    it { is_expected.to be_a(Google::APIClient) }
   end
 
   describe '#drive' do
     subject { @client.drive.name }
-    it { should == 'drive' }
+    it { is_expected.to eq('drive') }
   end
 
 end

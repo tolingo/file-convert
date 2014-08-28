@@ -11,12 +11,12 @@ describe FileConvert::Upload do
 
   describe '#initialize' do
     subject { upload }
-    it { should be_a(FileConvert::Upload) }
+    it { is_expected.to be_a(FileConvert::Upload) }
   end
 
   describe '#file' do
     subject { upload.file }
-    it { should be_a(FileConvert::File) }
+    it { is_expected.to be_a(FileConvert::File) }
   end
 
 end

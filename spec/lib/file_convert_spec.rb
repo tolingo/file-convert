@@ -9,7 +9,7 @@ describe FileConvert do
     let(:target_mime_type) { 'application/pdf' }
 
     subject { FileConvert.convert(file_path, source_mime_type, target_mime_type) }
-    it { should be_a(FileConvert::Conversion) }
+    it { is_expected.to be_a(FileConvert::Conversion) }
   end
 
   describe '.client' do

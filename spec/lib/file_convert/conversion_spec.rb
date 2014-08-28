@@ -16,7 +16,7 @@ describe FileConvert::Conversion do
     context 'existing mime-type' do
       let(:target_mime_type) { 'text/html' }
       subject { conversion }
-      it { should be_a(FileConvert::Conversion) }
+      it { is_expected.to be_a(FileConvert::Conversion) }
     end
 
     context 'missing mime-type' do
@@ -30,14 +30,14 @@ describe FileConvert::Conversion do
   describe '#file' do
     context 'existing' do
       subject { conversion.file }
-      it { should be_a(Google::APIClient::Result) }
+      it { is_expected.to be_a(Google::APIClient::Result) }
     end
   end
 
   describe '#body' do
     subject { conversion.body }
-    it { should include('<html>') }
-    it { should include('foobar') }
+    it { is_expected.to include('<html>') }
+    it { is_expected.to include('foobar') }
   end
 
 end
