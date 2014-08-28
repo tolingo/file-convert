@@ -1,9 +1,22 @@
 require 'spec_helper'
 
 describe FileConvert::Client do
-  before(:all) { configure_with_mock }
+  let(:config) do
+    {
+      'google_service_account' => {
+        'pkcs12_file_path' => :pkcs12_file_path,
+        'email' => :email
+      }
+    }
+  end
+  let(:asserter) { double('Google::APIClient::JWTAsserter').as_null_object }
 
-  before :each do
+  before do
+    expect(FileConvert).to receive_messages config: config
+    expect(Google::APIClient::JWTAsserter).to receive_messages new: asserter
+    expect(Google::APIClient::PKCS12).to receive(:load_key).with(
+      :pkcs12_file_path, 'notasecret'
+    )
     @client = FileConvert::Client.new
   end
 
