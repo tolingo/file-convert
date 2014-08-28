@@ -65,7 +65,7 @@ conversion.save('path_to_new_file.pdf')
 
 ## Specs
 
-Run `$ bundle exec rspec -c`
+Run `$ bundle exec rspec`
 
 ## Next Steps
 
