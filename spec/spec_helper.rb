@@ -1,5 +1,12 @@
 require 'pry'
-require File.join(File.dirname(__FILE__), '/../lib/file_convert')
+require File.expand_path('../../lib/file_convert', __FILE__)
+
+RSpec.configure do |config|
+  config.mock_with :rspec do |mock_config|
+    mock_config.verify_doubled_constant_names = true
+    mock_config.syntax = [:expect]
+  end
+end
 
 def configure_with_mock
   FileConvert.configure do |config|
