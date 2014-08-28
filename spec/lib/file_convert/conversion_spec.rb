@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe FileConvert::Conversion do
-  before(:all) { FileConvert::Configure::init_config! }
+  before(:all) { FileConvert::Configure.init_config! }
 
   let(:file_path) { 'spec/fixtures/test.txt' }
   let(:source_mime_type) { 'text/plain' }
@@ -16,7 +16,9 @@ describe FileConvert::Conversion do
   let(:upload) { FileConvert::Upload.new(client, file_path, source_mime_type) }
   let(:target_mime_type) { 'text/html' }
 
-  let(:conversion) { FileConvert::Conversion.new(client, upload.file, target_mime_type) }
+  let(:conversion) do
+    FileConvert::Conversion.new(client, upload.file, target_mime_type)
+  end
 
   describe '#initialize' do
     context 'existing mime-type' do
@@ -28,7 +30,9 @@ describe FileConvert::Conversion do
     context 'missing mime-type' do
       let(:target_mime_type) { 'text/foo' }
       it 'raises' do
-        expect { conversion }.to raise_error(FileConvert::Exception::MissingConversionMimeType)
+        expect { conversion }.to raise_error(
+          FileConvert::Exception::MissingConversionMimeType
+        )
       end
     end
   end
@@ -45,5 +49,4 @@ describe FileConvert::Conversion do
     it { is_expected.to include('<html>') }
     it { is_expected.to include('foobar') }
   end
-
 end
