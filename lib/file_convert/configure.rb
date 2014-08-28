@@ -10,7 +10,7 @@ module FileConvert
 
     def self.config_from_yaml
       ::File.open(DEFAULT_CONFIG_PATH) do |file|
-        YAML::load(file)['file_convert']
+        YAML.load(file)['file_convert']
       end
     end
 
@@ -35,7 +35,7 @@ module FileConvert
 
     def config_present?
       provider = 'google_service_account'
-      config.is_a?(Hash) && config.has_key?(provider)
+      config.is_a?(Hash) && config.key?(provider)
     end
   end
 end
