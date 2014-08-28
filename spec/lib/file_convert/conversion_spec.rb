@@ -6,7 +6,13 @@ describe FileConvert::Conversion do
   let(:file_path) { 'spec/fixtures/test.txt' }
   let(:source_mime_type) { 'text/plain' }
 
-  let(:client) { FileConvert::Client.new }
+  let(:client) do
+    double(
+      'FileConvert::Client', status: 200, data: { 'exportLinks' => {
+        'text/html' => 'is_so_supported!'
+      } }
+    ).as_null_object
+  end
   let(:upload) { FileConvert::Upload.new(client, file_path, source_mime_type) }
   let(:target_mime_type) { 'text/html' }
 
@@ -30,7 +36,7 @@ describe FileConvert::Conversion do
   describe '#file' do
     context 'existing' do
       subject { conversion.file }
-      it { is_expected.to be_a(Google::APIClient::Result) }
+      it { is_expected.to eq client }
     end
   end
 
