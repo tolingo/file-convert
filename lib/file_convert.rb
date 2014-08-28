@@ -25,12 +25,10 @@ module FileConvert
     FileConvert::Conversion.new(client, upload.file, target_mime_type)
   end
 
-  private
-
   ###
   # Initialize a new FileConvert::Client
   def self.client
-    raise Exception::MissingConfig unless config_present?
-    @@client ||= FileConvert::Client.new
+    fail Exception::MissingConfig unless config_present?
+    @client ||= FileConvert::Client.new
   end
 end
