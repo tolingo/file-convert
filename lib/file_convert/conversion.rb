@@ -16,6 +16,8 @@ module FileConvert
       @client = client
       @remote_file = remote_file
       @original_file_data = remote_file.data
+      # TODO Implement error handling for
+      # #<Google::APIClient::Schema::Drive::V2::File:0x45678fa DATA:{"error"=>{"errors"=>[{"domain"=>"usageLimits", "reason"=>"accessNotConfigured", "message"=>"Access Not Configured. Please use Google Developers Console to activate the API for your project."}], "code"=>403, "message"=>"Access Not Configured. Please use Google Developers Console to activate the API for your project."}}>
       @mime_type = mime_type
 
       # Raise if requested mime-type is not available
@@ -32,7 +34,7 @@ module FileConvert
     #
     # @return [FileConvert::Conversion]
     def save(target_path)
-      File.open(target_path, 'w') { |file| file.write(@file.body) }
+      ::File.open(target_path, 'w') { |file| file.write(@file.body) }
     end
 
     private
