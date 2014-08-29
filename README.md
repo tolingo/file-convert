@@ -1,4 +1,4 @@
-# File Converter using Google Drive
+# file-convert [![Build Status](https://travis-ci.org/tolingo/file-convert.svg?branch=feature%2Ffix-specs-and-refactor)](https://travis-ci.org/tolingo/file-convert) [![Code Climate](https://codeclimate.com/repos/53f4984b6956807963019c1a/badges/7aef33ebfd86eb320a98/gpa.svg)](https://codeclimate.com/repos/53f4984b6956807963019c1a/feed) [![Dependency Status](https://gemnasium.com/tolingo/file-convert.svg)](https://gemnasium.com/tolingo/file-convert)
 
 > Use google-api-ruby-client and Google Drive to convert files from one mime-type to another.
 For available formats see [Google Drive API Export Formats](https://developers.google.com/drive/web/integrate-open#open_and_convert_google_docs_in_your_app).
