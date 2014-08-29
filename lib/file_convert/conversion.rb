@@ -12,10 +12,10 @@ module FileConvert
     #   Target mime_type the file gets converted to
     #
     # @return [FileConvert::File] remote_file with requested #conversions
-    def initialize(client, original_file, mime_type)
+    def initialize(client, remote_file, mime_type)
       @client = client
-      @original_file = original_file
-      @original_file_data = original_file.data
+      @remote_file = remote_file
+      @original_file_data = remote_file.data
       @mime_type = mime_type
 
       # Raise if requested mime-type is not available
@@ -23,7 +23,7 @@ module FileConvert
 
       @file = fetch_file
       @body = @file.body
-      @original_file.add_conversion(mime_type, self)
+      @remote_file.add_conversion(mime_type, self)
     end
 
     ##
