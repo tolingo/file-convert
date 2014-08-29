@@ -1,3 +1,4 @@
 # Private keys for testing in development
 config/file_convert.yml
+config/ci_file_convert.yml
 config/*.p12
