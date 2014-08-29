@@ -1,8 +1,7 @@
 # File Converter using Google Drive
 
-## Features
-
-* Uses google-api-ruby-client and Google Drive to convert files from one mime-type to another
+> Use google-api-ruby-client and Google Drive to convert files from one mime-type to another.
+For available formats see [Google Drive API Export Formats](https://developers.google.com/drive/web/integrate-open#open_and_convert_google_docs_in_your_app).
 
 ## Installation
 
@@ -48,10 +47,6 @@ file_convert:
     pkcs12_file_path: 'config/file_convert_key.p12'
 ```
 
-## Available Formats
-
-See [Google Drive API Export Formats](https://developers.google.com/drive/web/integrate-open#open_and_convert_google_docs_in_your_app).
-
 ## Examples
 
 ```ruby
@@ -63,9 +58,16 @@ conversion.body
 conversion.save('path_to_new_file.pdf')
 ```
 
-## Specs and Rubocop
+## Specs
 
-Run `$ bundle exec rake`
+* `$ bundle exec rake` for `rspec` and `rubocop`.
+* `$ bundle exec rake build` to also run the `integration` tests located at `spec/integration/**/*_integration.rb`.
+Note that you need to have a valid `config/file_convert.yml` present for these tests to work,
+since we want to actually test the integration with the Google API here. (Do not worry, TravisCI will run these test as well.)
+
+## Contributing
+
+In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using the ways described [above](#specs).
 
 ## Next Steps
 
@@ -73,8 +75,5 @@ Run `$ bundle exec rake`
 * Add CLI
 * Add different adapter than Google?
 
-## Gloss
-
-Copyright © 2014 [Roman Ernst](http://farbenmeer.net), released under MIT license - sponsored by [tolingo GmbH](http://tolingo.com)
-
-.. without warranty of any kind!
+## License
+file-convert is Copyright © 2014 [Roman Ernst](http://farbenmeer.net) and [tolingo GmbH](http://tolingo.com) and may be redistributed under the terms specified in the [LICENSE](https://github.com/tolingo/file-convert/blob/master/LICENSE) file.

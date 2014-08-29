@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.email         = ['rernst@farbenmeer.net', 'jan@janraasch.com']
   s.license       = 'MIT'
   s.homepage      = 'https://github.com/tolingo/file-convert'
-  s.files         = Dir['README.md', 'lib/**/*']
+  s.files         = Dir['README.md', 'LICENSE', 'lib/**/*']
   s.require_path  = 'lib'
 
   s.required_ruby_version = Gem::Requirement.new '>= 1.9.2'
