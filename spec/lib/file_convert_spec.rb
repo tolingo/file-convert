@@ -29,6 +29,10 @@ describe FileConvert do
 
   describe '.client' do
     context 'with no config given' do
+      before do
+        FileConvert.configure { |c| c.replace({}) }
+      end
+
       it 'should raise' do
         expect { FileConvert.client }.to raise_error(
           FileConvert::Exception::MissingConfig
