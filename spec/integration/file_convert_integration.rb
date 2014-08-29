@@ -2,6 +2,12 @@ require 'spec_helper'
 
 describe 'Google API' do
   before do
+    if ENV['CI']
+      stub_const(
+        'FileConvert::Configure::DEFAULT_CONFIG_PATH',
+        'config/ci_file_convert.yml'
+      )
+    end
     FileConvert::Configure.init_config!
   end
 
@@ -21,7 +27,6 @@ describe 'Google API' do
     let(:target_mime_type) { 'application/pdf' }
 
     it 'integrates perfectly' do
-      skip
       expect(subject).to be_a FileConvert::Conversion
 
       expect(subject.body).to be_a String
@@ -29,12 +34,12 @@ describe 'Google API' do
 
       expect(subject.file).to be_a Google::APIClient::Result
 
-      tempfile = Tempfile.new file_path
+      tempfile = Tempfile.new 'You are such a file!'
       subject.save tempfile.path
+      tempfile.close
       expect(
         FileUtils.compare_file converted_file_path, tempfile.path
       ).to be true
-      tempfile.close
       tempfile.unlink
     end
   end

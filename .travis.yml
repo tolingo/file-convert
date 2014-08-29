@@ -1,0 +1,14 @@
+language: ruby
+rvm:
+- 1.9.3
+- 2.0.0
+- 2.1.0
+before_install:
+- openssl aes-256-cbc -K $encrypted_0e220d11e4c9_key -iv $encrypted_0e220d11e4c9_iv -in config/ci_file_convert.yml.enc -out config/ci_file_convert.yml -d
+- openssl aes-256-cbc -k "$SECRET_STUFF" -in config/travis-ci4myself-1293b40af30d.p12.enc -out config/travis-ci4myself-1293b40af30d.p12 -d -a
+- gem update --system
+install: bundle install
+script: bundle exec rake build
+env:
+  global:
+    secure: Go0fJjyER8kJARUV8Tfj0TYCOQ0DXgIMmCJN9yEc3NX8ru29rZaNtnuU0GcgFiBbeZn1o8N3aWeVydL8c9u2IW3nXoScBGIIhXDe2RCyzzeUNNukb4Sl5Mpbt9UZCmWxnfPZ74h6rI18oBUC2JXSsOaA0MBl7k4rlXGmgwa7Htw=
