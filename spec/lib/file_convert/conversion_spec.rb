@@ -22,7 +22,6 @@ describe FileConvert::Conversion do
 
   describe '#initialize' do
     context 'existing mime-type' do
-      let(:target_mime_type) { 'text/html' }
       subject { conversion }
       it { is_expected.to be_a(FileConvert::Conversion) }
     end
@@ -35,6 +34,26 @@ describe FileConvert::Conversion do
         )
       end
     end
+
+    # context 'error occured during file upload' do
+    #   before do
+    #     allow(upload.file).to receive(:to_hash).and_return upload.file
+    #     allow(upload.file).to receive(:data).and_return(
+    #       data: {
+    #         'exportLinks' => {
+    #           'text/html' => 'is_so_supported!'
+    #         },
+    #         'error' => 'ERRORS HAPPENED! WHUT?!'
+    #       }
+    #     )
+    #   end
+    #
+    #   it 'raises' do
+    #     expect { conversion }.to raise_error(
+    #       FileConvert::Exception::UploadedFileDataError
+    #     )
+    #   end
+    # end
   end
 
   describe '#file' do

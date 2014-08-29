@@ -16,12 +16,11 @@ module FileConvert
       @client = client
       @remote_file = remote_file
       @original_file_data = remote_file.data
-      # TODO Implement error handling for
-      # #<Google::APIClient::Schema::Drive::V2::File:0x45678fa DATA:{"error"=>{"errors"=>[{"domain"=>"usageLimits", "reason"=>"accessNotConfigured", "message"=>"Access Not Configured. Please use Google Developers Console to activate the API for your project."}], "code"=>403, "message"=>"Access Not Configured. Please use Google Developers Console to activate the API for your project."}}>
       @mime_type = mime_type
 
       # Raise if requested mime-type is not available
       fail missing_mime_type_exception unless export_links.key?(mime_type)
+      fail data_error_exception if @original_file_data.to_hash.key?('error')
 
       @file = fetch_file
       @body = @file.body
@@ -54,6 +53,10 @@ module FileConvert
       @client.execute(uri: export_links[@mime_type]).tap do |result|
         fail connection_error_exception unless result.status == 200
       end
+    end
+
+    def data_error_exception
+      Exception::UploadedFileDataError.new(@original_file_data)
     end
 
     def missing_mime_type_exception
