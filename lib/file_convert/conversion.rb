@@ -12,20 +12,19 @@ module FileConvert
     #   Target mime_type the file gets converted to
     #
     # @return [FileConvert::File] remote_file with requested #conversions
-    def initialize(client, original_file, mime_type)
+    def initialize(client, remote_file, mime_type)
       @client = client
-      @original_file = original_file
-      @original_file_data = original_file.data
+      @remote_file = remote_file
+      @original_file_data = remote_file.data
       @mime_type = mime_type
 
       # Raise if requested mime-type is not available
-      unless export_links.has_key?(mime_type)
-        raise missing_mime_type_exception
-      end
+      fail missing_mime_type_exception unless export_links.key?(mime_type)
+      fail data_error_exception if @original_file_data.to_hash.key?('error')
 
       @file = fetch_file
       @body = @file.body
-      @original_file.add_conversion(mime_type, self)
+      @remote_file.add_conversion(mime_type, self)
     end
 
     ##
@@ -34,7 +33,7 @@ module FileConvert
     #
     # @return [FileConvert::Conversion]
     def save(target_path)
-      File.open(target_path, 'w') { |file| file.write(@file.body) }
+      ::File.open(target_path, 'w') { |file| file.write(@file.body) }
     end
 
     private
@@ -52,8 +51,12 @@ module FileConvert
     # @return [Google::APIClient::Result]
     def fetch_file
       @client.execute(uri: export_links[@mime_type]).tap do |result|
-        raise connection_error_exception unless result.status == 200
+        fail connection_error_exception unless result.status == 200
       end
+    end
+
+    def data_error_exception
+      Exception::UploadedFileDataError.new(@original_file_data)
     end
 
     def missing_mime_type_exception

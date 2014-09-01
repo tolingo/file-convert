@@ -1,15 +1,14 @@
-# File Converter using Google Drive
+# file-convert [![Build Status](https://travis-ci.org/tolingo/file-convert.svg?branch=feature%2Ffix-specs-and-refactor)](https://travis-ci.org/tolingo/file-convert) [![Code Climate](https://codeclimate.com/repos/53f4984b6956807963019c1a/badges/7aef33ebfd86eb320a98/gpa.svg)](https://codeclimate.com/repos/53f4984b6956807963019c1a/feed) [![Dependency Status](https://gemnasium.com/tolingo/file-convert.svg)](https://gemnasium.com/tolingo/file-convert)
 
-## Features
-
-* Uses google-api-ruby-client and Google Drive to convert files from one mime-type to another
+> Use google-api-ruby-client and Google Drive to convert files from one mime-type to another.
+For available formats see [Google Drive API Export Formats](https://developers.google.com/drive/web/integrate-open#open_and_convert_google_docs_in_your_app).
 
 ## Installation
 
 Simply add it to your Gemfile:
 
 ```ruby
-gem "file-convert"
+gem 'file-convert'
 ```
 
 ## Config
@@ -48,10 +47,6 @@ file_convert:
     pkcs12_file_path: 'config/file_convert_key.p12'
 ```
 
-## Available Formats
-
-See [Google Drive API Export Formats](https://developers.google.com/drive/web/integrate-open#open_and_convert_google_docs_in_your_app).
-
 ## Examples
 
 ```ruby
@@ -65,7 +60,14 @@ conversion.save('path_to_new_file.pdf')
 
 ## Specs
 
-Run `$ bundle exec rspec -c`
+* `$ bundle exec rake` for `rspec` and `rubocop`.
+* `$ bundle exec rake build` to also run the `integration` tests located at `spec/integration/**/*_integration.rb`.
+Note that you need to have a valid `config/file_convert.yml` present for these tests to work,
+since we want to actually test the integration with the Google API here. (Do not worry, TravisCI will run these test as well.)
+
+## Contributing
+
+In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using the ways described [above](#specs).
 
 ## Next Steps
 
@@ -73,8 +75,5 @@ Run `$ bundle exec rspec -c`
 * Add CLI
 * Add different adapter than Google?
 
-## Gloss
-
-Copyright © 2014 [Roman Ernst](http://farbenmeer.net), released under CC BY-SA 3.0 license - sponsored by [tolingo GmbH](http://tolingo.com)
-
-.. without warranty of any kind!
+## License
+file-convert is Copyright © 2014 [Roman Ernst](http://farbenmeer.net) and [tolingo GmbH](http://tolingo.com) and may be redistributed under the terms specified in the [LICENSE](https://github.com/tolingo/file-convert/blob/master/LICENSE) file.

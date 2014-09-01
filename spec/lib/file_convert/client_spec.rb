@@ -1,20 +1,33 @@
-require File.join(File.dirname(__FILE__), '../../spec_helper.rb')
+require 'spec_helper'
 
 describe FileConvert::Client do
-  before(:all) { FileConvert::Configure::init_config! }
+  let(:config) do
+    {
+      'google_service_account' => {
+        'pkcs12_file_path' => :pkcs12_file_path,
+        'email' => :email
+      }
+    }
+  end
+  let(:asserter) { double('Google::APIClient::JWTAsserter').as_null_object }
 
-  before :each do
+  before do
+    expect(FileConvert).to receive_messages config: config
+    expect(Google::APIClient::JWTAsserter).to receive_messages new: asserter
+    expect(Google::APIClient::PKCS12).to receive(:load_key).with(
+      :pkcs12_file_path, 'notasecret'
+    )
     @client = FileConvert::Client.new
   end
 
   describe '#initialize' do
     subject { @client }
-    it { should be_a(Google::APIClient) }
+    it { is_expected.to be_a(Google::APIClient) }
   end
 
   describe '#drive' do
     subject { @client.drive.name }
-    it { should == 'drive' }
+    it { is_expected.to eq('drive') }
   end
 
 end
