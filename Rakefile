@@ -7,6 +7,8 @@ RSpec::Core::RakeTask.new(:spec) do |spec|
   spec.pattern = FileList['spec/**/*_spec.rb']
 end
 RSpec::Core::RakeTask.new(:integration) do |spec|
+  # Do not report to Code Climate
+  ENV['CODECLIMATE_REPO_TOKEN'] = nil
   spec.pattern = FileList['spec/integration/**/*_integration.rb']
 end
 RuboCop::RakeTask.new
