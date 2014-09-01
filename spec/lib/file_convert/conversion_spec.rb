@@ -5,10 +5,11 @@ describe FileConvert::Conversion do
 
   let(:file_path) { 'spec/fixtures/test.txt' }
   let(:source_mime_type) { 'text/plain' }
+  let(:http_status) { 200 }
 
   let(:client) do
     double(
-      'FileConvert::Client', status: 200, data: { 'exportLinks' => {
+      'FileConvert::Client', status: http_status, data: { 'exportLinks' => {
         'text/html' => 'is_so_supported!'
       } }
     ).as_null_object
@@ -35,25 +36,35 @@ describe FileConvert::Conversion do
       end
     end
 
-    # context 'error occured during file upload' do
-    #   before do
-    #     allow(upload.file).to receive(:to_hash).and_return upload.file
-    #     allow(upload.file).to receive(:data).and_return(
-    #       data: {
-    #         'exportLinks' => {
-    #           'text/html' => 'is_so_supported!'
-    #         },
-    #         'error' => 'ERRORS HAPPENED! WHUT?!'
-    #       }
-    #     )
-    #   end
-    #
-    #   it 'raises' do
-    #     expect { conversion }.to raise_error(
-    #       FileConvert::Exception::UploadedFileDataError
-    #     )
-    #   end
-    # end
+    context 'when connection error occurs during fetch' do
+      let(:http_status) { 400 }
+      it 'raises' do
+        expect { conversion }.to raise_error(
+          FileConvert::Exception::DownloadConnectionError
+        )
+      end
+    end
+
+    context 'when error occured during file upload' do
+      let(:upload) do
+        instance_double(
+          'FileConvert::Upload',
+          file: instance_double(
+            'FileConvert::File', data: {
+              'exportLinks' => {
+                'text/html' => 'is_so_supported!'
+              },
+              'error' => 'ERRORS HAPPENED! WHUT?!'
+            }
+          )
+        )
+      end
+      it 'raises' do
+        expect { conversion }.to raise_error(
+          FileConvert::Exception::UploadedFileDataError
+        )
+      end
+    end
   end
 
   describe '#file' do

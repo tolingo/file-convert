@@ -51,20 +51,20 @@ module FileConvert
     # @return [Google::APIClient::Result]
     def fetch_file
       @client.execute(uri: export_links[@mime_type]).tap do |result|
-        fail connection_error_exception unless result.status == 200
+        fail connection_error_exception(result) unless result.status == 200
       end
     end
 
     def data_error_exception
-      Exception::UploadedFileDataError.new(@original_file_data)
+      Exception::UploadedFileDataError.new @original_file_data
     end
 
     def missing_mime_type_exception
-      Exception::MissingConversionMimeType.new(@mime_type, export_links.keys)
+      Exception::MissingConversionMimeType.new @mime_type, export_links.keys
     end
 
-    def connection_error_exception
-      Exception::DownloadConnectionError.new(@file['error']['message'])
+    def connection_error_exception(result)
+      Exception::DownloadConnectionError.new result
     end
   end
 end

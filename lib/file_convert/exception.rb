@@ -30,15 +30,15 @@ module FileConvert
     end
 
     class DownloadConnectionError < StandardError
-      def initialize(error_message)
+      def initialize(result)
         super()
-        @error_message = error_message
+        @result = result
       end
 
       def message
         ''"
           An error occured connection to Google Drive.
-          Error message was: #{@error_message}
+          Result of request was: #{@result}
         "''
       end
     end
