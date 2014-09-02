@@ -14,8 +14,6 @@ gem 'file-convert'
 
 ## Config
 
-### Via initializer
-
 `FileConvert` exposes `.configure` which accepts a block and passes the config hash.
 *Example*:
 
@@ -26,26 +24,6 @@ FileConvert.configure do |config|
     'pkcs12_file_path' => 'config/file_convert_key.p12'
   }
 end
-```
-
-### Via YAML
-
-You need to add a YAML configuration file to `/config/file_convert.yml` that looks like `config/file_convert.sample.yml`.
-
-In order to communicate with the Google API, `file_convert` requires a google developer email Address (`email`) and `pkcs12_file_path`.
-
-Visit [Google Developers Console](console.developers.google.com) and check **Credentials**.
-Here you can add a *new Client ID*. Select **Service Account** as application type.
-
-You should now be able to download your *P12 key* and see your *developer email address*.
-Place the *P12 key* somewhere accessible for your app and provide the location to the config. The sample config assumes your *P12 key* is located in `/config/file_convert_key.p12`.
-
-Sample config as in `file_convert.samle.yml`:
-```yaml
-file_convert:
-  google_service_account:
-    email: '<strange-hash>@developer.gserviceaccount.com'
-    pkcs12_file_path: 'config/file_convert_key.p12'
 ```
 
 ## Examples
