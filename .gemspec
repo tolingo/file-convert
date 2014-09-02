@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.summary       = 'Instrumentalize Google Drive to convert files'
   s.description   = 'Uses google-api-ruby-client and Google Drive to convert files from one mime-type to another'
 
-  s.authors       = ['Roman Ernst', 'Jan Raasch']
-  s.email         = ['rernst@farbenmeer.net', 'jan@janraasch.com']
+  s.authors       = ['Roman Ernst', 'Jan Raasch', 'Christoph Hugo']
+  s.email         = ['rernst@farbenmeer.net', 'jan@janraasch.com', 'christoph.hugo@gmail.com']
   s.license       = 'MIT'
   s.homepage      = 'https://github.com/tolingo/file-convert'
   s.files         = Dir['README.md', 'LICENSE', 'lib/**/*']
