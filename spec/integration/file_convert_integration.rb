@@ -3,12 +3,13 @@ require 'spec_helper'
 describe 'Google API' do
   before do
     if ENV['CI']
-      stub_const(
-        'FileConvert::Configure::DEFAULT_CONFIG_PATH',
-        'config/ci_file_convert.yml'
-      )
+      FileConvert.configure do |config|
+        config['google_service_account'] = {
+          'email' => ENV['email'],
+          'pkcs12_file_path' => 'config/travis-ci4myself-1293b40af30d.p12'
+        }
+      end
     end
-    FileConvert::Configure.init_config!
   end
 
   # Remember that this `subject` triggers an API call
