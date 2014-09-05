@@ -1,4 +1,4 @@
-# file-convert [![Gem Version](https://badge.fury.io/rb/file-convert.svg)](http://badge.fury.io/rb/file-convert) [![Build Status](https://travis-ci.org/tolingo/file-convert.svg?branch=feature%2Ffix-specs-and-refactor)](https://travis-ci.org/tolingo/file-convert) 
+# file-convert [![Gem Version](https://badge.fury.io/rb/file-convert.svg)](http://badge.fury.io/rb/file-convert) [![Build Status](https://travis-ci.org/tolingo/file-convert.svg?branch=feature%2Ffix-specs-and-refactor)](https://travis-ci.org/tolingo/file-convert) [![tolingo](http://img.shields.io/badge/powered--by-tolingo-green.svg)](http://tolingo.com)
 [![Code Climate](https://codeclimate.com/repos/53f4984b6956807963019c1a/badges/7aef33ebfd86eb320a98/gpa.svg)](https://codeclimate.com/repos/53f4984b6956807963019c1a/feed) [![Test Coverage](https://codeclimate.com/repos/53f4984b6956807963019c1a/badges/7aef33ebfd86eb320a98/coverage.svg)](https://codeclimate.com/repos/53f4984b6956807963019c1a/feed) [![Dependency Status](https://gemnasium.com/tolingo/file-convert.svg)](https://gemnasium.com/tolingo/file-convert)
 
 > Use google-api-ruby-client and Google Drive to convert files from one mime-type to another.
