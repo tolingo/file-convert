@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe FileConvert::Upload do
+RSpec.describe FileConvert::Upload do
   let(:file_path) { 'spec/fixtures/test.txt' }
   let(:mime_type) { 'text/plain' }
 

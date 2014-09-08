@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Google API' do
+RSpec.describe 'Google API' do
   before do
     unless ENV.key?('email') && ENV.key?('pkcspath')
       fail "Set ENV['email'] and ENV['pkcspath'] for these tests to work."

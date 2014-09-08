@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe FileConvert::Conversion do
+RSpec.describe FileConvert::Conversion do
   before(:all) { FileConvert::Configure.init_config! }
 
   let(:file_path) { 'spec/fixtures/test.txt' }

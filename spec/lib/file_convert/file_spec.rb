@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe FileConvert::Conversion do
+RSpec.describe FileConvert::Conversion do
   let(:original_file) { double 'file', data: :data }
   let(:file) { FileConvert::File.new original_file }
   subject { file }

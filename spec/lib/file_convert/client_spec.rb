@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe FileConvert::Client do
+RSpec.describe FileConvert::Client do
   let(:config) do
     {
       'google_service_account' => {

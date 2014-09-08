@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe FileConvert do
+RSpec.describe FileConvert do
   let(:client) { instance_double 'FileConvert::Client' }
 
   describe '.convert' do
