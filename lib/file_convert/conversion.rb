@@ -18,9 +18,10 @@ module FileConvert
       @original_file_data = remote_file.data
       @mime_type = mime_type
 
-      # Raise if requested mime-type is not available
-      fail missing_mime_type_exception unless export_links.key?(mime_type)
+      # Fail if upload errored
       fail data_error_exception if @original_file_data.to_hash.key?('error')
+      # Fail if requested mime-type is not available
+      fail missing_mime_type_exception unless export_links.key?(mime_type)
 
       @file = fetch_file
       @body = @file.body
