@@ -4,7 +4,6 @@ rvm:
 - 2.0.0
 - 2.1.0
 before_install:
-- openssl aes-256-cbc -K $encrypted_0e220d11e4c9_key -iv $encrypted_0e220d11e4c9_iv -in config/ci_file_convert.yml.enc -out config/ci_file_convert.yml -d
 - openssl aes-256-cbc -k "$SECRET_STUFF" -in config/travis-ci4myself-1293b40af30d.p12.enc -out config/travis-ci4myself-1293b40af30d.p12 -d -a
 - gem update --system
 install: bundle install
