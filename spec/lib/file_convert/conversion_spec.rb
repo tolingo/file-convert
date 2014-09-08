@@ -6,10 +6,14 @@ describe FileConvert::Conversion do
   let(:file_path) { 'spec/fixtures/test.txt' }
   let(:source_mime_type) { 'text/plain' }
   let(:http_status) { 200 }
+  let(:upload_error) { false }
 
   let(:client) do
     double(
-      'FileConvert::Client', status: http_status, data: { 'exportLinks' => {
+      'FileConvert::Client',
+      error?: upload_error,
+      status: http_status,
+      data: { 'exportLinks' => {
         'text/html' => 'is_so_supported!'
       } }
     ).as_null_object
@@ -46,19 +50,7 @@ describe FileConvert::Conversion do
     end
 
     context 'when error occured during file upload' do
-      let(:upload) do
-        instance_double(
-          'FileConvert::Upload',
-          file: instance_double(
-            'FileConvert::File', data: {
-              'exportLinks' => {
-                'text/html' => 'is_so_supported!'
-              },
-              'error' => 'ERRORS HAPPENED! WHUT?!'
-            }
-          )
-        )
-      end
+      let(:upload_error) { true }
       it 'raises' do
         expect { conversion }.to raise_error(
           FileConvert::Exception::UploadedFileDataError

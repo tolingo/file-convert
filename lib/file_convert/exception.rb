@@ -16,15 +16,14 @@ module FileConvert
     end
 
     class UploadedFileDataError < StandardError
-      def initialize(file_data)
+      def initialize(upload_result)
         super()
-        @file_data = file_data
+        @upload_result = upload_result
       end
 
       def message
         ''"
-          An error occured while uploading the file.
-          Data was: #{@file_data}
+          An error occured while uploading: #{@upload_result.error_message}.
         "''
       end
     end

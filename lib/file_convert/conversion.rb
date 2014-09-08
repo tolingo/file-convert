@@ -15,11 +15,12 @@ module FileConvert
     def initialize(client, remote_file, mime_type)
       @client = client
       @remote_file = remote_file
-      @original_file_data = remote_file.data
+      @original_upload_result = remote_file.original_file
+      @remote_file_data = remote_file.data
       @mime_type = mime_type
 
       # Fail if upload errored
-      fail data_error_exception if @original_file_data.to_hash.key?('error')
+      fail data_error_exception if @original_upload_result.error?
       # Fail if requested mime-type is not available
       fail missing_mime_type_exception unless export_links.key?(mime_type)
 
@@ -42,7 +43,7 @@ module FileConvert
     ##
     # @return [Hash] available mime-type download URIs
     def export_links
-      available_links = @original_file_data['exportLinks'] || {}
+      available_links = @remote_file_data['exportLinks'] || {}
       available_links.to_hash
     end
 
@@ -58,7 +59,7 @@ module FileConvert
     end
 
     def data_error_exception
-      Exception::UploadedFileDataError.new @original_file_data
+      Exception::UploadedFileDataError.new @original_upload_result
     end
 
     def missing_mime_type_exception
