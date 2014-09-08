@@ -42,7 +42,8 @@ module FileConvert
     ##
     # @return [Hash] available mime-type download URIs
     def export_links
-      @original_file_data['exportLinks'].to_hash
+      available_links = @original_file_data['exportLinks'] || {}
+      available_links.to_hash
     end
 
     ###
