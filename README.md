@@ -41,7 +41,7 @@ conversion.save('path_to_new_file.pdf')
 
 * `$ bundle exec rake` for `rspec` and `rubocop`.
 * `$ bundle exec rake build` to also run the `integration` tests located at `spec/integration/**/*_integration.rb`.
-Note that you need to configure valid Google Api credentials for these tests to work, since we want to actually test the integration with the Google API here. (Do not worry, TravisCI will run these tests as well.)
+Note that you need to configure valid Google API credentials (i.e. set `ENV['email']` and `ENV['pkcspath']`) for these tests to work, since we want to actually test the integration with the Google API here. (Do not worry, TravisCI will run these tests as well.)
 
 ## Contributing
 
