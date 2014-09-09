@@ -9,11 +9,11 @@ RSpec.describe FileConvert::Client do
       }
     }
   end
-  let(:asserter) { double('Google::APIClient::JWTAsserter').as_null_object }
+  let(:authorization) { double('Signet::OAuth2::Client').as_null_object }
 
   before do
     expect(FileConvert).to receive_messages config: config
-    expect(Google::APIClient::JWTAsserter).to receive_messages new: asserter
+    expect(Signet::OAuth2::Client).to receive_messages new: authorization
     expect(Google::APIClient::PKCS12).to receive(:load_key).with(
       :pkcs12_file_path, 'notasecret'
     )

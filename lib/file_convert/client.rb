@@ -1,6 +1,6 @@
 module FileConvert
   require 'google/api_client'
-
+  require 'signet/oauth_2/client'
   class Client < Google::APIClient
     APP_OPTIONS = {
       application_name: 'file-convert',
@@ -19,10 +19,12 @@ module FileConvert
       gaccount['auth_url'] ||= 'https://www.googleapis.com/auth/drive'
 
       key = load_key gaccount['pkcs12_file_path'], 'notasecret'
-      asserter = get_asserter gaccount['email'], gaccount['auth_url'], key
 
       super(APP_OPTIONS).tap do |client|
-        client.authorization = asserter.authorize
+        client.authorization = get_authorization(
+          gaccount['email'], gaccount['auth_url'], key
+        )
+        client.authorization.fetch_access_token!
         @drive = client.discovered_api('drive', 'v2')
       end
     end
@@ -33,8 +35,14 @@ module FileConvert
       Google::APIClient::PKCS12.load_key(path, secret)
     end
 
-    def get_asserter(email, auth_url, key)
-      Google::APIClient::JWTAsserter.new email, auth_url, key
+    def get_authorization(email, auth_url, key)
+      Signet::OAuth2::Client.new(
+        token_credential_uri: 'https://accounts.google.com/o/oauth2/token',
+        audience: 'https://accounts.google.com/o/oauth2/token',
+        scope: auth_url,
+        issuer: email,
+        signing_key: key
+      )
     end
   end
 end
