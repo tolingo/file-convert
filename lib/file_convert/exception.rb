@@ -15,30 +15,31 @@ module FileConvert
       end
     end
 
-    class UploadedFileDataError < StandardError
-      def initialize(upload_result)
+    class ConnectionError < StandardError
+      def initialize(result, action)
         super()
-        @upload_result = upload_result
+        @result = result
+        @error_message = result.error_message
+        @action = action
       end
 
       def message
         ''"
-          An error occured while uploading: #{@upload_result.error_message}.
+          An error occured while #{@action}: #{@error_message}.
+          Body of request was: #{@result.body}
         "''
       end
     end
 
-    class DownloadConnectionError < StandardError
+    class UploadConnectionError < ConnectionError
       def initialize(result)
-        super()
-        @result = result
+        super(result, 'uploading')
       end
+    end
 
-      def message
-        ''"
-          An error occured connection to Google Drive.
-          Result of request was: #{@result}
-        "''
+    class DownloadConnectionError < ConnectionError
+      def initialize(result)
+        super(result, 'downloading')
       end
     end
 

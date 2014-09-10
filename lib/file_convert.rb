@@ -9,7 +9,7 @@ module FileConvert
 
   extend FileConvert::Configure
 
-  ###
+  ##
   # @param [String] file_path
   #   Source file for conversions
   # @param [String]
@@ -23,7 +23,7 @@ module FileConvert
     FileConvert::Conversion.new(client, upload.file, target_mime_type)
   end
 
-  ###
+  ##
   # Initialize a new FileConvert::Client
   def self.client
     fail Exception::MissingConfig unless config_present?

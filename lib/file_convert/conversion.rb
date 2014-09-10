@@ -47,19 +47,19 @@ module FileConvert
       available_links.to_hash
     end
 
-    ###
+    ##
     # Actually downloads the file
     # Raises if request was not successfull
     #
     # @return [Google::APIClient::Result]
     def fetch_file
       @client.execute(uri: export_links[@mime_type]).tap do |result|
-        fail connection_error_exception(result) unless result.status == 200
+        fail connection_error_exception(result) unless result.success?
       end
     end
 
     def data_error_exception
-      Exception::UploadedFileDataError.new @original_upload_result
+      Exception::UploadConnectionError.new @original_upload_result
     end
 
     def missing_mime_type_exception

@@ -3,14 +3,14 @@ require 'spec_helper'
 RSpec.describe FileConvert::Conversion do
   let(:file_path) { 'spec/fixtures/test.txt' }
   let(:source_mime_type) { 'text/plain' }
-  let(:http_status) { 200 }
+  let(:conversion_success) { true }
   let(:upload_error) { false }
 
   let(:client) do
     double(
       'FileConvert::Client',
       error?: upload_error,
-      status: http_status,
+      success?: conversion_success,
       data: { 'exportLinks' => {
         'text/html' => 'is_so_supported!'
       } }
@@ -39,7 +39,7 @@ RSpec.describe FileConvert::Conversion do
     end
 
     context 'when connection error occurs during fetch' do
-      let(:http_status) { 400 }
+      let(:conversion_success) { false }
       it 'raises' do
         expect { conversion }.to raise_error(
           FileConvert::Exception::DownloadConnectionError
@@ -51,7 +51,7 @@ RSpec.describe FileConvert::Conversion do
       let(:upload_error) { true }
       it 'raises' do
         expect { conversion }.to raise_error(
-          FileConvert::Exception::UploadedFileDataError
+          FileConvert::Exception::UploadConnectionError
         )
       end
     end
