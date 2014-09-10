@@ -1,11 +1,8 @@
 module FileConvert
   module Configure
     def self.config
-      @@config
-    end
-
-    def self.init_config!
       @@config ||= {}
+      @@config
     end
 
     def configure

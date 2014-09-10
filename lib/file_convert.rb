@@ -9,8 +9,6 @@ module FileConvert
 
   extend FileConvert::Configure
 
-  FileConvert::Configure.init_config!
-
   ###
   # @param [String] file_path
   #   Source file for conversions

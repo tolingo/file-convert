@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 RSpec.describe FileConvert::Conversion do
-  before(:all) { FileConvert::Configure.init_config! }
-
   let(:file_path) { 'spec/fixtures/test.txt' }
   let(:source_mime_type) { 'text/plain' }
   let(:http_status) { 200 }

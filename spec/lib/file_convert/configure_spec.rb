@@ -6,7 +6,6 @@ RSpec.describe FileConvert::Configure do
   let(:module_mock) do
     Module.new do
       extend FileConvert::Configure
-      FileConvert::Configure.init_config!
     end
   end
 

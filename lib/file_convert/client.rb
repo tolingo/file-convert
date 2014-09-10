@@ -12,7 +12,7 @@ module FileConvert
 
     attr_reader :drive
 
-    ###
+    ##
     # Inherits from Google::APIClient
     # Basically wraps authentiation for simple configuration
     #
