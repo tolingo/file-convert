@@ -23,6 +23,9 @@ RSpec.describe FileConvert::Client do
   describe '#initialize' do
     subject { @client }
     it { is_expected.to be_a(Google::APIClient) }
+    it 'should retry failed requests once' do
+      expect(@client.retries).to be 1
+    end
   end
 
   describe '#drive' do

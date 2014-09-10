@@ -1,10 +1,13 @@
 module FileConvert
   require 'google/api_client'
   require 'signet/oauth_2/client'
+
   class Client < Google::APIClient
     APP_OPTIONS = {
       application_name: 'file-convert',
-      application_version: FileConvert::Version::STRING
+      application_version: FileConvert::Version::STRING,
+      # Retry request **once** in case authorization failed
+      retries: 1
     }
 
     attr_reader :drive
@@ -19,13 +22,13 @@ module FileConvert
       gaccount['auth_url'] ||= 'https://www.googleapis.com/auth/drive'
 
       key = load_key gaccount['pkcs12_file_path'], 'notasecret'
+      options = APP_OPTIONS.merge(authorization: get_authorization(
+        gaccount['email'], gaccount['auth_url'], key
+      ))
 
-      super(APP_OPTIONS).tap do |client|
-        client.authorization = get_authorization(
-          gaccount['email'], gaccount['auth_url'], key
-        )
+      super(options).tap do |client|
         client.authorization.fetch_access_token!
-        @drive = client.discovered_api('drive', 'v2')
+        @drive = client.discovered_api 'drive', 'v2'
       end
     end
 
