@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = Gem::Requirement.new '>= 1.9.2'
 
-  s.add_dependency 'google-api-client', '~> 0.7.0'
+  s.add_dependency 'google-api-client', '~> 0.8.1'
 
   s.add_development_dependency 'rspec', '~> 3.1.0'
   s.add_development_dependency 'rubocop', '~> 0.27.0'
