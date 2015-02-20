@@ -32,5 +32,4 @@ RSpec.describe FileConvert::Client do
     subject { @client.drive.name }
     it { is_expected.to eq('drive') }
   end
-
 end

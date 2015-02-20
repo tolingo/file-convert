@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 RSpec.describe FileConvert::Configure do
-
   before(:each) { FileConvert::Configure.class_variable_set(:@@config, nil) }
   let(:module_mock) do
     Module.new do
