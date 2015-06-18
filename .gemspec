@@ -19,8 +19,8 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'google-api-client', '~> 0.8.1'
 
-  s.add_development_dependency 'rspec', '~> 3.2.0'
-  s.add_development_dependency 'rubocop', '~> 0.30.0'
+  s.add_development_dependency 'rspec', '~> 3.3.0'
+  s.add_development_dependency 'rubocop', '~> 0.32.0'
   s.add_development_dependency 'rake', '~> 10.4.2'
   s.add_development_dependency 'pry', '~> 0.10.1'
   s.add_development_dependency 'codeclimate-test-reporter', '~> 0.4.0'
