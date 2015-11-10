@@ -1,5 +1,6 @@
 .bundle
 .ruby-version
+.env
 Gemfile.lock
 coverage
 # Private keys for testing in development
