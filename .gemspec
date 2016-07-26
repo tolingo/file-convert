@@ -23,5 +23,4 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rubocop', '~> 0.34'
   s.add_development_dependency 'rake', '~> 10.4.2'
   s.add_development_dependency 'pry', '~> 0.10.1'
-  s.add_development_dependency 'codeclimate-test-reporter', '~> 0.4.0'
 end
