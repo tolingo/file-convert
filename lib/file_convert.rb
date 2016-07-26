@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module FileConvert
   require 'file_convert/version'
   require 'file_convert/exception'
@@ -26,7 +27,7 @@ module FileConvert
   ##
   # Initialize a new FileConvert::Client
   def self.client
-    fail Exception::MissingConfig unless config_present?
+    raise Exception::MissingConfig unless config_present?
     @client ||= FileConvert::Client.new
   end
 end

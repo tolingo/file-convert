@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module FileConvert
   class Conversion
     attr_reader :file
@@ -20,9 +21,9 @@ module FileConvert
       @mime_type = mime_type
 
       # Fail if upload errored
-      fail data_error_exception if @original_upload_result.error?
+      raise data_error_exception if @original_upload_result.error?
       # Fail if requested mime-type is not available
-      fail missing_mime_type_exception unless export_links.key?(mime_type)
+      raise missing_mime_type_exception unless export_links.key?(mime_type)
 
       @file = fetch_file
       @body = @file.body
@@ -54,7 +55,7 @@ module FileConvert
     # @return [Google::APIClient::Result]
     def fetch_file
       @client.execute(uri: export_links[@mime_type]).tap do |result|
-        fail connection_error_exception(result) unless result.success?
+        raise connection_error_exception(result) unless result.success?
       end
     end
 

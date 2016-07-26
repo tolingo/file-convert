@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module FileConvert
   require 'google/api_client'
   require 'signet/oauth_2/client'
@@ -8,7 +9,7 @@ module FileConvert
       application_version: FileConvert::Version::STRING,
       # Retry request **once** in case authorization failed
       retries: 1
-    }
+    }.freeze
 
     attr_reader :drive
 

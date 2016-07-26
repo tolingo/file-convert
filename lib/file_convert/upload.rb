@@ -1,10 +1,11 @@
+# frozen_string_literal: true
 module FileConvert
   class Upload
     DEFAULT_PARAMS = {
       'uploadType' => 'multipart',
       'convert' => true,
       'alt' => 'json'
-    }
+    }.freeze
 
     attr_reader :file
 

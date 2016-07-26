@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module FileConvert
   module Exception
     class MissingConversionMimeType < StandardError
@@ -8,10 +9,10 @@ module FileConvert
       end
 
       def message
-        ''"
+        "
           The requested mime type '#{@requested_mime_type}' is not available.
           Available mime types: #{@available_mime_types.join(', ')}.
-        "''
+        "
       end
     end
 
@@ -24,10 +25,10 @@ module FileConvert
       end
 
       def message
-        ''"
+        "
           An error occured while #{@action}: #{@error_message}.
           Body of request was: #{@result.body}
-        "''
+        "
       end
     end
 
@@ -45,10 +46,10 @@ module FileConvert
 
     class MissingConfig < StandardError
       def message
-        ''"
+        "
           Please define a config for FileConvert.
           See https://github.com/tolingo/file-convert#config for default.
-        "''
+        "
       end
     end
   end

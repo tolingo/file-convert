@@ -1,9 +1,10 @@
+# frozen_string_literal: true
 require 'spec_helper'
 
 RSpec.describe 'Google API' do
   before do
     unless ENV.key?('email') && ENV.key?('pkcspath')
-      fail "Set ENV['email'] and ENV['pkcspath'] for these tests to work."
+      raise "Set ENV['email'] and ENV['pkcspath'] for these tests to work."
     end
     FileConvert.configure do |config|
       config['google_service_account'] = {

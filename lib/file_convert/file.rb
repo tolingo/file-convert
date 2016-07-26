@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module FileConvert
   class File
     attr_reader :original_file
