@@ -36,7 +36,7 @@ module FileConvert
     #
     # @return [FileConvert::Conversion]
     def save(target_path)
-      ::File.open(target_path, 'w') { |file| file.write(@file.body) }
+      ::File.open(target_path, 'wb') { |file| file.write(@file.body) }
     end
 
     private
